@@ -1,0 +1,5 @@
+#!/bin/sh
+# Strip AI attribution trailers so commits show only the human author.
+tmp="$1.tmp"
+grep -viE '^(co-authored-by:.*(claude|anthropic)|claude-session:)' "$1" > "$tmp" || true
+mv "$tmp" "$1"
